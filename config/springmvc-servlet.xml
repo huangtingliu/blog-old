@@ -13,10 +13,21 @@
 	http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 	">
 
+	<!-- 导入文件 -->
 	<import resource="classpath*:/datasource.xml" />
+	<import resource="classpath*:/interceptor.xml" />
 
+	<!-- 自动扫描注解 -->
 	<context:component-scan base-package="com.coder6.blog.service"></context:component-scan>
-
+	<!-- 注解驱动：不配置无法访问注解的配置资源，会出现404错误 -->
+	<mvc:annotation-driven />
+	<!-- 
+		<mvc:annotation-driven />会解析所有带注解的资源
+		而没有注解的会使用默认的<mvc:default-servlet-handler/>解析 
+	-->
+	<!-- <mvc:default-servlet-handler/>  --> 
+	
+	<!-- 视图解析器 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		id="internalResourceViewResolver">
@@ -25,5 +36,10 @@
 		<!-- 后缀 -->
 		<property name="suffix" value=".jsp" />
 	</bean>
-
+	
+	<!-- 定义初始方法 -->
+	<bean id="initial" class="com.coder6.blog.init.Initial" init-method="init"></bean>
+	
+	<!-- 配置资源文件访问路径，访问这里的mapping就可以映射到location目录 -->
+	<mvc:resources location="/WEB-INF/res/" mapping="#{initial.resRoot}/**"></mvc:resources>
 </beans>
