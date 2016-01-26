@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,9 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("login")
 public class LoginService {
 	
+	private static final Logger log = Logger.getLogger(LoginService.class);
+	
 	@RequestMapping("toLogin")
 	public ModelAndView toLogin(Map<String, Object> model){
-		System.out.println("正在跳转到登录页...");
+		log.info("登录处理");
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
