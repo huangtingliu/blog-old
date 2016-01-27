@@ -47,8 +47,8 @@ public class BaseInterceptor implements HandlerInterceptor {
 			return true;
 		}
 		
-		log.info("不能访问该路径："+basePath);
-		return false;
+//		log.info("不能访问该路径："+basePath);
+		return true;
 	}
 
 }
