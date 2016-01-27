@@ -15,7 +15,7 @@
 	<!-- 拦截器配置 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
+			<mvc:mapping path="/base/**"/>
 			<bean class="com.coder6.blog.interceptors.BaseInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>

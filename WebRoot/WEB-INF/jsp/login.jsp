@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     登录页面. <br>
-    <c:forEach items="${list}" var="user">
+    <c:forEach items="${requestDataBean.resultData.list}" var="user">
     	<p>姓名：${user.userName }</p>
     	<p>年龄：${user.age }</p>
     	<p>性别：${user.sex }</p>

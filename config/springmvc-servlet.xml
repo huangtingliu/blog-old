@@ -19,6 +19,7 @@
 
 	<!-- 自动扫描注解 -->
 	<context:component-scan base-package="com.coder6.blog.service"></context:component-scan>
+	<context:component-scan base-package="com.coder6.blog.controller"></context:component-scan>
 	<!-- 注解驱动：不配置无法访问注解的配置资源，会出现404错误 -->
 	<mvc:annotation-driven />
 	<!-- 
@@ -40,6 +41,9 @@
 	<!-- 定义初始方法 -->
 	<bean id="initial" class="com.coder6.blog.init.Initial" init-method="init"></bean>
 	
-	<!-- 配置资源文件访问路径，访问这里的mapping就可以映射到location目录 -->
+	<!-- 配置资源文件访问路径，访问这里的mapping就可以映射到location目录,但是会被拦截器拦截 -->
 	<mvc:resources location="/WEB-INF/res/" mapping="#{initial.resRoot}/**"></mvc:resources>
+	
+	<!-- bean -->
+	<bean class="com.coder6.blog.utils.SpringContextUtil"></bean>
 </beans>

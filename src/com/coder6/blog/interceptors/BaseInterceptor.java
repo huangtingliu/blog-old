@@ -41,13 +41,13 @@ public class BaseInterceptor implements HandlerInterceptor {
 		String basePath = req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()
 				+ctnPath+path;
 		
-		log.info("访问路径："+basePath);
 		
-		if("/login/toLogin".equals(path)){
+		
+		if("/base/login/toLogin".equals(path)){
 			return true;
 		}
 		
-		
+		log.info("不能访问该路径："+basePath);
 		return false;
 	}
 
