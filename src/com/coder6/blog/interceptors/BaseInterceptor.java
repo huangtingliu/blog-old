@@ -36,6 +36,8 @@ public class BaseInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse res,
 			Object obj) throws Exception {
 
+		req.setCharacterEncoding("utf-8");
+		
 		String ctnPath = req.getContextPath();
 		String path = req.getServletPath();
 		String basePath = req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()
@@ -48,6 +50,7 @@ public class BaseInterceptor implements HandlerInterceptor {
 		}
 		
 //		log.info("不能访问该路径："+basePath);
+		log.info("访问路径："+basePath);
 		return true;
 	}
 

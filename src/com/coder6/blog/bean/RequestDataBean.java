@@ -9,10 +9,20 @@ import javax.servlet.http.HttpServletResponse;
  **/
 public class RequestDataBean {
 
+	/** 成功 */
+	public static final String SUCCESSFUL = "1";
+	/** 失败 */
+	public static final String FAIL = "2";	
+	/** 未找到 */
+	public static final String NOTFOUND = "4";
+	/** 错误异常 */
+	public static final String ERROR = "5";
+	
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	private Object resultData; //返回值
 	private String page;//返回跳转页面
+	private String info;//返回提示信息
 	
 
 	public RequestDataBean(HttpServletRequest request,
@@ -53,6 +63,21 @@ public class RequestDataBean {
 		this.resultData = resultData;
 	}
 
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+
+	public String getString(String key){
+		
+		return this.request.getParameter(key);
+	}
 	
+	public int getInt(String key){
+		return Integer.parseInt(getString(key));
+	}
 	
 }

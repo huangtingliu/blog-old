@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import com.coder6.blog.utils.SpringContextUtil;
 @RequestMapping("/base")
 public class BaseController {
 
+	private static final Logger log = Logger.getLogger(BaseController.class);
 	
 	/**
 	 * TODO	前台请求调用方法，拥有跳转页面，可能有传值
@@ -33,15 +35,32 @@ public class BaseController {
 	public String base(@PathVariable String service,@PathVariable String method, HttpServletRequest request,
 			HttpServletResponse response,Model model) throws Exception{
 
+		
+		Object bean = null;
+		Method m = null;
+		
 		//封装requestDataBean
 		RequestDataBean requestDataBean = new RequestDataBean(request, response);
 		
 		//通过上下文获取实例bean,前台访问/base/login/toLogin,则访问loginService的toLogin方法
-		Object bean = SpringContextUtil.getBean(service+"Service");
+		try {
+			bean = SpringContextUtil.getBean(service+"Service");
+		} catch (NoClassDefFoundError e) {
+			// TODO: handle exception
+			log.error("访问："+service+"/"+method+"......."+service+"Service不存在");
+			return "error404";
+		}
+		
 		//获取实例class
 		Class<?> c = bean.getClass();
-		//根据方法名与参数获取实例方法
-		Method m = c.getDeclaredMethod(method,RequestDataBean.class);
+		//根据方法名与参数获取实例方法，可能抛出NoSuchMethodException
+		try {
+			m = c.getDeclaredMethod(method,RequestDataBean.class);
+		} catch (NoSuchMethodException e) {
+			// TODO: handle exception
+			log.error("访问："+service+"/"+method+"......."+service+"Service中"+method+"方法不存在");
+			return "error404";
+		}
 		
 		//执行实例方法，放回封装bean
 		requestDataBean = (RequestDataBean) m.invoke(c.newInstance(),requestDataBean);
@@ -78,18 +97,31 @@ public class BaseController {
 	public @ResponseBody Object ajax(@PathVariable String service,@PathVariable String method, HttpServletRequest request,
 			HttpServletResponse response,Model model) throws Exception{
 		
+		Object bean = null;
+		Method m = null;
 		
 		//封装requestDataBean
 		RequestDataBean requestDataBean = new RequestDataBean(request, response);
 		
 		//通过上下文获取实例bean,前台访问/base/login/toLogin,则访问loginService的toLogin方法
-		Object bean = SpringContextUtil.getBean(service+"Service");
+		try {
+			bean = SpringContextUtil.getBean(service+"Service");
+		} catch (NoClassDefFoundError e) {
+			// TODO: handle exception
+			log.error("访问："+service+"/"+method+"......."+service+"Service不存在");
+			return RequestDataBean.NOTFOUND;
+		}
 		
 		//获取实例class
 		Class<?> c = bean.getClass();
-		
-		//根据方法名与参数获取实例方法
-		Method m = c.getDeclaredMethod(method,RequestDataBean.class);
+		//根据方法名与参数获取实例方法，可能抛出NoSuchMethodException
+		try {
+			m = c.getDeclaredMethod(method,RequestDataBean.class);
+		} catch (NoSuchMethodException e) {
+			// TODO: handle exception
+			log.error("访问："+service+"/"+method+"......."+service+"Service中"+method+"方法不存在");
+			return RequestDataBean.NOTFOUND;
+		}
 		
 		//返回实例执行返回值（前台页面与值）
 		return m.invoke(c.newInstance(),requestDataBean);

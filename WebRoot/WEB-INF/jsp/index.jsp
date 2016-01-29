@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'login.jsp' starting page</title>
+    <title>首页</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,18 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    登录页面. <br>
-    <%-- <c:forEach items="${requestDataBean.resultData.list}" var="user">
-    	<p>姓名：${user.userName }</p>
-    	<p>年龄：${user.age }</p>
-    	<p>性别：${user.sex }</p>
-    </c:forEach> --%>
+    首页. <br>
     
-    <form action="${ctxPath}/base/login/login" method="post">
-    	<input name="userName" type="text" placeholder="enter your name here"/>
-    	<input name="password" type="password" placeholder="enter your password here"/>
-    	<button id="subBtn" type="submit">登录</button>
-    </form>
+    你好啊！${requestDataBean.resultData.userName }.
     
     <%@include file="comm/comm.jsp" %>
   </body>

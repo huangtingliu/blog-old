@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
   </head>
   
-  <body style="height: 90%;width:99%;background-color: #666">
+  <body style="height: 95%;width:99%;background-color: #666">
     <div style="height:10%;width:100%;text-align: center;line-height: 400px">
 	    <img alt="" src="${resRoot}/img/fuel-404-logo.png" style="vertical-align: middle;">&nbsp;
     </div>

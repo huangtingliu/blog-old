@@ -41,4 +41,23 @@ public class LoginService {
 		
 		return rdb;
 	}
+	
+	/**
+	 * TODO 登录
+	 * 作者：黄廷柳
+	 * 2016年1月29日上午11:49:13
+	 */
+	public RequestDataBean login(RequestDataBean rdb){
+		
+		String userName = rdb.getString("userName");
+		String password = rdb.getString("password");
+		
+		Map<String, Object> userMap = new HashMap<String, Object>();
+		userMap.put("userName", userName);
+		userMap.put("password", password);
+		
+		rdb.setResultData(userMap);
+		rdb.setPage("index");
+		return rdb;
+	}
 }
