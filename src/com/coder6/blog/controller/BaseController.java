@@ -89,6 +89,18 @@ public class BaseController {
 	}
 	
 	/**
+	 * 
+	 * TODO 页面跳转
+	 * 作者：黄廷柳
+	 * 2016年3月18日下午3:50:12
+	 */
+	@RequestMapping(value = "/page/{page}")
+	public String page(@PathVariable String page, HttpServletRequest request,
+			HttpServletResponse response,Model model) throws Exception{
+				return page;
+	}
+	
+	/**
 	 * TODO ajax请求统一调用接口
 	 * 作者：黄廷柳
 	 * 2016年1月27日下午5:04:10

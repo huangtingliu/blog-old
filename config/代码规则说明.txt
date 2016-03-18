@@ -7,7 +7,9 @@
 2.ajax请求规范
 	前台请求路径：${ctxPath}/base/ajax/x1/x2，这里的x1,x2首字母必须小写
 	其他同上
-	
+3.页面跳转
+	前台请求路径：${ctxPath}/base/page/x,这里的x就是页面路径
+	如：目录是jsp/login.jsp,则x为login  
 二、service代码规范
 	统一返回自定义封装类RequestDataBean，其中包括resultData返回值、page返回页、request、response等
 	统一参数RequestDataBean
