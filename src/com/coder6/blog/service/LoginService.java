@@ -5,10 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 
 import com.coder6.blog.bean.RequestDataBean;
+import com.coder6.blog.mapper.User;
 
 /**
  *描述：登录模块
@@ -19,6 +24,11 @@ import com.coder6.blog.bean.RequestDataBean;
 public class LoginService {
 	
 	private static final Logger log = Logger.getLogger(LoginService.class);
+	
+	@Resource(name="jdbcTemplate")
+	private JdbcTemplate jdbc;
+	@Autowired
+	private User user;
 	
 //	public ModelAndView toLogin(Map<String, Object> model){
 	public RequestDataBean toLogin(RequestDataBean rdb){
@@ -52,9 +62,12 @@ public class LoginService {
 		String userName = rdb.getString("userName");
 		String password = rdb.getString("password");
 		
+//		List<Map<String, Object>> List = jdbc.queryForList("select * from user");
+		List<?> List = user.userList();
 		Map<String, Object> userMap = new HashMap<String, Object>();
 		userMap.put("userName", userName);
 		userMap.put("password", password);
+		userMap.put("list", List);
 		
 		rdb.setResultData(userMap);
 		rdb.setPage("index");

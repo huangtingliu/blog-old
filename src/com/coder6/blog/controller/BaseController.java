@@ -27,9 +27,10 @@ public class BaseController {
 	private static final Logger log = Logger.getLogger(BaseController.class);
 	
 	/**
-	 * TODO	前台请求调用方法，拥有跳转页面，可能有传值
+	 * 
+	 * TODO 前台请求调用方法，拥有跳转页面，可能有传值
 	 * 作者：黄廷柳
-	 * 2016年1月27日下午3:52:34
+	 * 2016年1月27日下午3:12:41
 	 */
 	@RequestMapping(value = "/{service}/{method}")
 	public String base(@PathVariable String service,@PathVariable String method, HttpServletRequest request,
@@ -63,8 +64,7 @@ public class BaseController {
 		}
 		
 		//执行实例方法，放回封装bean
-		requestDataBean = (RequestDataBean) m.invoke(c.newInstance(),requestDataBean);
-		
+		requestDataBean = (RequestDataBean) m.invoke(bean,requestDataBean);
 		//保存返回值，前台可以获取
 		model.addAttribute("requestDataBean",requestDataBean);
 		
@@ -136,6 +136,6 @@ public class BaseController {
 		}
 		
 		//返回实例执行返回值（前台页面与值）
-		return m.invoke(c.newInstance(),requestDataBean);
+		return m.invoke(bean,requestDataBean);
 	}
 }

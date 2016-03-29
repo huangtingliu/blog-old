@@ -36,11 +36,28 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+    <!-- 采用@Transactional注解方式来使用事务 -->   
+  	<tx:annotation-driven transaction-manager="txManager"/> 
+  	
 	<!--JDBC Template -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
-    <!-- 采用@Transactional注解方式来使用事务 -->   
-  	<tx:annotation-driven transaction-manager="txManager"/> 
+  	<!-- mybatis配置 -->
+  	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 当映射xml文件不与接口类在同以目录时,自动扫描执行sql的xml文件 -->
+		<property name="mapperLocations" value="classpath:mapper-*.xml"></property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.coder6.blog.mapper"></property>
+		<!-- 注 意 , 没 有 必 要 去 指 定 SqlSessionFactory 或 SqlSessionTemplate , 
+		因 为 MapperScannerConfigurer 将会创建 MapperFactoryBean,之后自动装配。
+		但是,如果你使 用了一个 以上的 DataSource ,那 么自动 装配可 能会失效 。这种 情况下 ,
+		你可 以使用 sqlSessionFactoryBeanName 或 sqlSessionTemplateBeanName 属性来设置正确的 bean 名 称来使用。
+		这就是它如何来配置的,注意 bean 的名称是必须的,而不是 bean 的引用,因 此,value 属性在这里替代通常的 ref:  -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
 </beans>
