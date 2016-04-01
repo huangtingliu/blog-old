@@ -1,4 +1,4 @@
-package com.coder6.blog.utils;
+package com.huangtl.blog.utils;
 
 import javax.servlet.http.HttpServletRequest;
 

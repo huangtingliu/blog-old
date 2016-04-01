@@ -1,4 +1,4 @@
-package com.coder6.blog.mapper;
+package com.huangtl.blog.mapper;
 
 import java.util.List;
 

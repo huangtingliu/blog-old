@@ -1,3 +1,4 @@
+package com.huangtl.blog.service;
 //package com.coder6.blog.service;
 //import javax.annotation.Resource;
 //

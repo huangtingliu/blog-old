@@ -52,7 +52,7 @@
 		<property name="mapperLocations" value="classpath:mapper-*.xml"></property>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.coder6.blog.mapper"></property>
+		<property name="basePackage" value="com.huangtl.blog.mapper"></property>
 		<!-- 注 意 , 没 有 必 要 去 指 定 SqlSessionFactory 或 SqlSessionTemplate , 
 		因 为 MapperScannerConfigurer 将会创建 MapperFactoryBean,之后自动装配。
 		但是,如果你使 用了一个 以上的 DataSource ,那 么自动 装配可 能会失效 。这种 情况下 ,

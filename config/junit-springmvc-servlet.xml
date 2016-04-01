@@ -17,9 +17,9 @@
 	<import resource="classpath*:/interceptor.xml" />
 
 	<!-- 自动扫描注解 -->
-	<context:component-scan base-package="com.coder6.blog.service"></context:component-scan>
-	<context:component-scan base-package="com.coder6.blog.controller"></context:component-scan>
-	<context:component-scan base-package="com.coder6.blog.test"></context:component-scan>
+	<context:component-scan base-package="com.huangtl.blog.service"></context:component-scan>
+	<context:component-scan base-package="com.huangtl.blog.controller"></context:component-scan>
+	<context:component-scan base-package="com.huangtl.blog.test"></context:component-scan>
 	<!-- 注解驱动：不配置无法访问注解的配置资源，会出现404错误 -->
 	<mvc:annotation-driven />
 	<!-- 
@@ -39,5 +39,5 @@
 	</bean>
 	
 	<!-- bean -->
-	<bean class="com.coder6.blog.utils.SpringContextUtil"></bean>
+	<bean class="com.huangtl.blog.utils.SpringContextUtil"></bean>
 </beans>

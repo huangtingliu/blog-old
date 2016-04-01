@@ -1,4 +1,4 @@
-package com.coder6.blog.controller;
+package com.huangtl.blog.controller;
 
 import java.lang.reflect.Method;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.coder6.blog.bean.RequestDataBean;
-import com.coder6.blog.utils.SpringContextUtil;
+import com.huangtl.blog.bean.RequestDataBean;
+import com.huangtl.blog.utils.SpringContextUtil;
 
 /**
  * 描述： 请求统一入口

@@ -1,4 +1,4 @@
-package com.coder6.blog.init;
+package com.huangtl.blog.init;
 
 import java.util.Date;
 

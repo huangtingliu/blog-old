@@ -1,4 +1,4 @@
-package com.coder6.blog.test;
+package com.huangtl.blog.test;
 
 import static org.junit.Assert.*;
 
@@ -15,9 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.coder6.blog.init.Initial;
-import com.coder6.blog.mapper.User;
-import com.coder6.blog.utils.SpringContextUtil;
+import com.huangtl.blog.init.Initial;
+import com.huangtl.blog.mapper.User;
+import com.huangtl.blog.utils.SpringContextUtil;
 import com.mysql.jdbc.AssertionFailedException;
 
 /**

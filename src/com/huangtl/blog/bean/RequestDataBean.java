@@ -1,4 +1,4 @@
-package com.coder6.blog.bean;
+package com.huangtl.blog.bean;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

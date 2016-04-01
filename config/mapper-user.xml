@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.coder6.blog.mapper.User" >
+<mapper namespace="com.huangtl.blog.mapper.User" >
 	
 	<!-- 
 	sql标签一般用来写可重用 的sql代码语句嵌套在其它语句中，使用：

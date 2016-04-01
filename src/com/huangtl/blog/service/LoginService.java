@@ -1,4 +1,4 @@
-package com.coder6.blog.service;
+package com.huangtl.blog.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 
-import com.coder6.blog.bean.RequestDataBean;
-import com.coder6.blog.mapper.User;
+import com.huangtl.blog.bean.RequestDataBean;
+import com.huangtl.blog.mapper.User;
 
 /**
  *描述：登录模块

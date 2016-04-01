@@ -16,7 +16,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/base/**"/>
-			<bean class="com.coder6.blog.interceptors.BaseInterceptor"></bean>
+			<bean class="com.huangtl.blog.interceptors.BaseInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>
