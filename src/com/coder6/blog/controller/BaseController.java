@@ -93,17 +93,6 @@ public class BaseController {
 //		return "forward:/"+service+"/"+method;
 	}
 	
-	/**
-	 * 
-	 * TODO 页面跳转
-	 * 作者：黄廷柳
-	 * 2016年3月18日下午3:50:12
-	 */
-	@RequestMapping(value = "/page/{dir}/{page}")
-	public String page(@PathVariable String dir,@PathVariable String page, HttpServletRequest request,
-			HttpServletResponse response,Model model) throws Exception{
-		return dir+"/"+page;
-	}
 	
 	/**
 	 * TODO ajax请求统一调用接口
@@ -146,5 +135,28 @@ public class BaseController {
 		
 		//返回实例执行返回值（前台页面与值）
 		return m.invoke(bean,requestDataBean);
+	}
+	
+	/**
+	 * 
+	 * TODO 页面跳转
+	 * 作者：黄廷柳
+	 * 2016年3月18日下午3:50:12
+	 */
+	@RequestMapping(value = "/page/{dir}/{page}")
+	public String page(@PathVariable String dir,@PathVariable String page, HttpServletRequest request,
+			HttpServletResponse response,Model model) throws Exception{
+		return dir+"/"+page;
+	}
+	/**
+	 * 
+	 * TODO 页面跳转
+	 * 作者：黄廷柳
+	 * 2016年4月1日下午5:54:53
+	 */
+	@RequestMapping(value = "/page/{page}")
+	public String page(@PathVariable String page, HttpServletRequest request,
+			HttpServletResponse response,Model model) throws Exception{
+		return page;
 	}
 }

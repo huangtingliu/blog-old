@@ -17,10 +17,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="blog login page">
-	<link rel="stylesheet" href="${resRoot}/js/editor.md-master/css/editormd.css">
+	<link rel="stylesheet" href="${resRoot}/plugins/editor.md-master/css/editormd.css">
   </head>
   
   <body>
+  	<%@include file="../comm/header.jsp" %>
   	<div id="layout">
 	  	<header>
 	  		<h1>发布博文</h1>
@@ -83,7 +84,7 @@ function get(){
     </div>
     
     <%@include file="../comm/comm.jsp" %>
-    <script type="text/javascript" src="${resRoot}/js/editor.md-master/editormd.min.js"></script>
+    <script type="text/javascript" src="${resRoot}/plugins/editor.md-master/editormd.min.js"></script>
   	<script type="text/javascript">
   	var testEditor;	
   	$(function(){
@@ -91,7 +92,7 @@ function get(){
             width   : "90%",
             height  : 640,
             syncScrolling : "single",
-            path    : "${resRoot}/js/editor.md-master/lib/",
+            path    : "${resRoot}/plugins/editor.md-master/lib/",
             emoji :true,
             saveHTMLToTextarea:true,
             toolbarCustomIcons :{

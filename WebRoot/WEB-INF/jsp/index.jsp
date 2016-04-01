@@ -22,27 +22,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    首页. <br>
-  
-    你好啊！${requestDataBean.resultData.userName }.
-    <table>
-    	<thead>
-    		<tr>
-    			<th>用户名</th>
-    			<th>性别</th>
-    			<th>邮箱</th>
-    		</tr>
-    	</thead>
-    	<tbody>
-    		<c:forEach items="${requestDataBean.resultData.list }" var="user">
-	    		<tr>
-	    			<td>${user.user_name }</td>
-	    			<td>${user.sex eq'0'?'男':'女'}</td>
-	    			<td>${user.email }</td>
-	    		</tr>
-    		</c:forEach>
-    	</tbody>
-    </table>
+    <%@include file="comm/header.jsp" %>
+  	
+    
     <%@include file="comm/comm.jsp" %>
   </body>
 </html>
