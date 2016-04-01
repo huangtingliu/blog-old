@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,6 +50,10 @@ public class BaseController {
 		} catch (NoClassDefFoundError e) {
 			// TODO: handle exception
 			log.error("访问："+service+"/"+method+"......."+service+"Service不存在");
+			return "error404";
+		} catch (Exception e) {
+			// TODO: handle exception
+			log.error("访问："+service+"/"+method+"出现异常!");
 			return "error404";
 		}
 		
@@ -94,10 +99,10 @@ public class BaseController {
 	 * 作者：黄廷柳
 	 * 2016年3月18日下午3:50:12
 	 */
-	@RequestMapping(value = "/page/{page}")
-	public String page(@PathVariable String page, HttpServletRequest request,
+	@RequestMapping(value = "/page/{dir}/{page}")
+	public String page(@PathVariable String dir,@PathVariable String page, HttpServletRequest request,
 			HttpServletResponse response,Model model) throws Exception{
-				return page;
+		return dir+"/"+page;
 	}
 	
 	/**
@@ -121,6 +126,10 @@ public class BaseController {
 		} catch (NoClassDefFoundError e) {
 			// TODO: handle exception
 			log.error("访问："+service+"/"+method+"......."+service+"Service不存在");
+			return RequestDataBean.NOTFOUND;
+		} catch (Exception e) {
+			// TODO: handle exception
+			log.error("ajax访问："+service+"/"+method+"出现异常!");
 			return RequestDataBean.NOTFOUND;
 		}
 		

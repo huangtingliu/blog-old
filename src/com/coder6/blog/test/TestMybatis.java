@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.coder6.blog.init.Initial;
 import com.coder6.blog.mapper.User;
 import com.coder6.blog.utils.SpringContextUtil;
+import com.mysql.jdbc.AssertionFailedException;
 
 /**
  *描述：junit测试mybatis配置
@@ -39,8 +40,18 @@ public class TestMybatis {
 	}
 	
 	@Test
-	public void test() {
-		//List<?> list = user.userList();
+	public void interfaceMapperProxy() {
+		List<?> list = user.userList();
 		assertNotNull(user);//测试mybatis接口映射
+	}
+	@Test
+	public void test() {
+		try {
+			List<?> list = user.userList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			fail("接口映射xml错误");
+		}
+		
 	}
 }
