@@ -74,7 +74,7 @@ public class BaseController {
 		model.addAttribute("requestDataBean",requestDataBean);
 		
 		//返回跳转页
-		return requestDataBean.getPage();
+		return requestDataBean.getPage(); 
 		
 //		有两种方式向前台传值（参数为map返回ModelAndView）,这里不推荐参数用Map的这种方式
 		//第一种
@@ -99,7 +99,7 @@ public class BaseController {
 	 * 作者：黄廷柳
 	 * 2016年1月27日下午5:04:10
 	 */
-	@RequestMapping(value = "/ajax/{ser}/{method}")
+	@RequestMapping(value = "/ajax/{service}/{method}")
 	public @ResponseBody Object ajax(@PathVariable String service,@PathVariable String method, HttpServletRequest request,
 			HttpServletResponse response,Model model) throws Exception{
 		
@@ -132,9 +132,11 @@ public class BaseController {
 			log.error("访问："+service+"/"+method+"......."+service+"Service中"+method+"方法不存在");
 			return RequestDataBean.NOTFOUND;
 		}
-		
-		//返回实例执行返回值（前台页面与值）
-		return m.invoke(bean,requestDataBean);
+		//返回实例执行返回值存入封装bean
+		requestDataBean = (RequestDataBean) m.invoke(bean,requestDataBean);
+		//保存返回值，前台可以获取
+		model.addAttribute("requestDataBean",requestDataBean);
+		return requestDataBean;
 	}
 	
 	/**

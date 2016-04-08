@@ -20,7 +20,7 @@
 	
 	<!-- 用户列表 -->
 	<select id="userList" resultType="Map">
-		select * from user 
+		select * from t_user 
 	</select>
 	
 </mapper>

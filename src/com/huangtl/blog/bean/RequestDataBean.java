@@ -20,6 +20,7 @@ public class RequestDataBean {
 	
 	private HttpServletRequest request;
 	private HttpServletResponse response;
+	private Object status; //返回状态(1:成功 2:失败)
 	private Object resultData; //返回值
 	private String page;//返回跳转页面
 	private String info;//返回提示信息
@@ -53,6 +54,14 @@ public class RequestDataBean {
 	}
 	public void setPage(String page) {
 		this.page = page;
+	}
+
+	public Object getStatus() {
+		return status;
+	}
+
+	public void setStatus(Object status) {
+		this.status = status;
 	}
 
 	public Object getResultData() {

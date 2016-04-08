@@ -9,6 +9,6 @@ import java.util.List;
  *创建人:黄廷柳
  *创建日期：2016年3月25日 下午3:16:26
  **/
-public interface User {
-	public List userList();
+public interface User extends IMapper{
+	public List<?> userList();
 }

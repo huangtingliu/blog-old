@@ -62,7 +62,7 @@ public class LoginService {
 		String userName = rdb.getString("userName");
 		String password = rdb.getString("password");
 		
-//		List<Map<String, Object>> List = jdbc.queryForList("select * from user");
+//		List<Map<String, Object>> List = jdbc.queryForList("select * from t_user");
 		List<?> List = user.userList();
 		Map<String, Object> userMap = new HashMap<String, Object>();
 		userMap.put("userName", userName);
@@ -70,7 +70,8 @@ public class LoginService {
 		userMap.put("list", List);
 		
 		rdb.setResultData(userMap);
-		rdb.setPage("index");
+//		rdb.setPage("index");
+		rdb.setPage("markdown/md");
 		return rdb;
 	}
 }

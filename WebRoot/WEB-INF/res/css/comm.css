@@ -9,6 +9,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 	display: block;
 }
 body{
+	/* padding-top: 60px;因为头部nav标签会挡住内容 */
 }
 
 #layout{
