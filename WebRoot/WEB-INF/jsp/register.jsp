@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- <header><h1 class="logo-name">投票系统</h1></header> -->
 	<div class="middle-box text-center">
 		<div>
-			<h3>登 录</h3>
+			<h3>欢迎注册</h3>
 			<form class="" action="" method="post">
 				<div class="form-group">
 					<input class="form-control" placeholder="请输入用户名" required="" type="text">
@@ -59,8 +59,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="form-group">
                     <input class="form-control" placeholder="请输入密码" required="" type="password">
                 </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
-                <p class="text-muted text-center"><small>还没有账户？</small><a href="${ctxPath}/base/page/register">点此注册</a>
+                <div class="form-group">
+                    <input class="form-control" placeholder="请再次输入密码" required="" type="password">
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">注 册</button>
+                <p class="text-muted text-center"><small>已经有账户了？</small><a href="${ctxPath}/base/page/login">点此登录</a>
                 </p>
 			</form>
 		</div>
