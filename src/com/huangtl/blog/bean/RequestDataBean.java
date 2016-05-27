@@ -1,14 +1,22 @@
 package com.huangtl.blog.bean;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.huangtl.blog.utils.RequestUtil;
+
+
 /**
  *描述：封装请求内容类
  *创建人:黄廷柳
  *创建日期：2016年1月27日 下午4:05:00
  **/
-public class RequestDataBean {
+public class RequestDataBean extends HashMap<String, Object>{
 
+	private static final long serialVersionUID = 3168310185320257064L;
+	
 	/** 成功 */
 	public static final String SUCCESSFUL = "1";
 	/** 失败 */
@@ -20,10 +28,6 @@ public class RequestDataBean {
 	
 	private HttpServletRequest request;
 	private HttpServletResponse response;
-	private Object status; //返回状态(1:成功 2:失败)
-	private Object resultData; //返回值
-	private String page;//返回跳转页面
-	private String info;//返回提示信息
 	
 
 	public RequestDataBean(HttpServletRequest request,
@@ -31,6 +35,7 @@ public class RequestDataBean {
 		super();
 		this.request = request;
 		this.response = response;
+		RequestUtil.putParam(this,request);
 	}
 	
 	public RequestDataBean() {
@@ -48,36 +53,6 @@ public class RequestDataBean {
 	}
 	public void setResponse(HttpServletResponse response) {
 		this.response = response;
-	}
-	public String getPage() {
-		return page;
-	}
-	public void setPage(String page) {
-		this.page = page;
-	}
-
-	public Object getStatus() {
-		return status;
-	}
-
-	public void setStatus(Object status) {
-		this.status = status;
-	}
-
-	public Object getResultData() {
-		return resultData;
-	}
-
-	public void setResultData(Object resultData) {
-		this.resultData = resultData;
-	}
-
-	public String getInfo() {
-		return info;
-	}
-
-	public void setInfo(String info) {
-		this.info = info;
 	}
 
 	public String getString(String key){

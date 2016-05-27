@@ -1,5 +1,7 @@
 package com.huangtl.blog.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -8,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 
 import com.huangtl.blog.bean.RequestDataBean;
+import com.huangtl.blog.bean.ResponseDataBean;
 import com.huangtl.blog.mapper.BlogMapper;
 
 /**
@@ -31,13 +34,30 @@ public class BlogService {
 	 * 作者：黄廷柳
 	 * 2016年4月5日下午4:57:44
 	 */
-	public RequestDataBean issueBlog(RequestDataBean rdb){
+	public ResponseDataBean issueBlog(RequestDataBean rdb){
 		log.info("发布博文...");
-		
-		blogMapper.issueBlog();
-		rdb.setStatus(RequestDataBean.SUCCESSFUL);
-		
-		return rdb;
+		ResponseDataBean responseDataBean=new ResponseDataBean();
+		//blogMapper.issueBlog(rdb.getString("html"),rdb.getString("markdown"),rdb.getString("preview_html"),rdb.getString("author"));
+		blogMapper.issueBlog(rdb);
+		responseDataBean.setInfo("成功");
+		responseDataBean.setStatus(ResponseDataBean.SUCCESSFUL);
+		return responseDataBean;
+	}
+	
+	/**
+	 * 
+	 * TODO 获取博文列表
+	 * 作者：黄廷柳
+	 * 2016年5月27日上午10:05:14
+	 */
+	public ResponseDataBean blogList(RequestDataBean rdb){
+		log.info("获取博文列表...");
+		ResponseDataBean responseDataBean=new ResponseDataBean();
+		List<?> list = blogMapper.blogList(rdb);
+		responseDataBean.setResultData(list);
+		responseDataBean.setInfo("成功");
+		responseDataBean.setStatus(ResponseDataBean.SUCCESSFUL);
+		return responseDataBean;
 	}
 	
 }

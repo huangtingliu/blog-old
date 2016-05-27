@@ -140,8 +140,8 @@ function get(){
   			},
   			//dataType:"josn",
   			success:function(data){
-  				data = data.status;
-  				alert(data);
+  				data = data.resultData;
+  				console.info(data);
   			}
   		});
   	}

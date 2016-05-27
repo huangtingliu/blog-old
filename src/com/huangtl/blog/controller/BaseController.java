@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.huangtl.blog.bean.RequestDataBean;
+import com.huangtl.blog.bean.ResponseDataBean;
 import com.huangtl.blog.utils.SpringContextUtil;
 
 /**
@@ -69,12 +69,12 @@ public class BaseController {
 		}
 		
 		//执行实例方法，放回封装bean
-		requestDataBean = (RequestDataBean) m.invoke(bean,requestDataBean);
+		ResponseDataBean responseDataBean = (ResponseDataBean) m.invoke(bean,requestDataBean);
 		//保存返回值，前台可以获取
-		model.addAttribute("requestDataBean",requestDataBean);
+		model.addAttribute("responseDataBean",responseDataBean);
 		
 		//返回跳转页
-		return requestDataBean.getPage(); 
+		return responseDataBean.getPage(); 
 		
 //		有两种方式向前台传值（参数为map返回ModelAndView）,这里不推荐参数用Map的这种方式
 		//第一种
@@ -133,10 +133,10 @@ public class BaseController {
 			return RequestDataBean.NOTFOUND;
 		}
 		//返回实例执行返回值存入封装bean
-		requestDataBean = (RequestDataBean) m.invoke(bean,requestDataBean);
+		ResponseDataBean responseDataBean = (ResponseDataBean) m.invoke(bean,requestDataBean);
 		//保存返回值，前台可以获取
-		model.addAttribute("requestDataBean",requestDataBean);
-		return requestDataBean;
+		model.addAttribute("responseDataBean",responseDataBean);
+		return responseDataBean;
 	}
 	
 	/**

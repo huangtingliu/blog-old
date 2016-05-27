@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 
 import com.huangtl.blog.bean.RequestDataBean;
+import com.huangtl.blog.bean.ResponseDataBean;
 import com.huangtl.blog.mapper.User;
 
 /**
@@ -31,8 +32,9 @@ public class LoginService {
 	private User user;
 	
 //	public ModelAndView toLogin(Map<String, Object> model){
-	public RequestDataBean toLogin(RequestDataBean rdb){
+	public ResponseDataBean toLogin(RequestDataBean rdb){
 		log.info("登录处理");
+		ResponseDataBean responseDataBean=new ResponseDataBean();
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -46,10 +48,10 @@ public class LoginService {
 		Map<String, Object> resultData = new HashMap<String, Object>();
 		resultData.put("list",list);
 		
-		rdb.setResultData(resultData);
-		rdb.setPage("login");//返回页面
+		responseDataBean.setResultData(resultData);
+		responseDataBean.setPage("login");//返回页面
 		
-		return rdb;
+		return responseDataBean;
 	}
 	
 	/**
@@ -57,8 +59,8 @@ public class LoginService {
 	 * 作者：黄廷柳
 	 * 2016年1月29日上午11:49:13
 	 */
-	public RequestDataBean login(RequestDataBean rdb){
-		
+	public ResponseDataBean login(RequestDataBean rdb){
+		ResponseDataBean responseDataBean=new ResponseDataBean();
 		String userName = rdb.getString("userName");
 		String password = rdb.getString("password");
 		
@@ -69,9 +71,17 @@ public class LoginService {
 		userMap.put("password", password);
 		userMap.put("list", List);
 		
-		rdb.setResultData(userMap);
+		responseDataBean.setResultData(userMap);
 //		rdb.setPage("index");
-		rdb.setPage("markdown/md");
-		return rdb;
+		responseDataBean.setPage("markdown/md");
+		return responseDataBean;
+	}
+	
+	public static void main(String[] args) {
+		int number = -8;
+		System.out.println("原始:    "+Integer.toBinaryString(number)+"|"+number);
+		System.out.println("左移:    "+Integer.toBinaryString(number << 4)+"|"+(number << 4));
+		System.out.println("右移:    "+Integer.toBinaryString(number >> 4)+"|"+(number >> 4));
+		System.out.println("无符号右移:"+Integer.toBinaryString(number >>> 4)+"|"+(number >>> 4));
 	}
 }

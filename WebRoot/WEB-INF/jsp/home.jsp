@@ -22,6 +22,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <jsp:forward page="${ctxPath}/base/page/home"></jsp:forward>
+    <%@include file="comm/header.jsp" %>
+  	
+    
+    <%@include file="comm/comm.jsp" %>
   </body>
 </html>
