@@ -22,8 +22,8 @@
 		    </div>
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			    <ul class="nav navbar-nav">
-			    	<li class=""><a href="${ctxPath}/base/page/markdown/issue_blog?currentPage=blogList" class=""><span class="nav-title">博文列表</span></a></li>
-			    	<li class=""><a href="${ctxPath}/base/page/markdown/issue_blog?currentPage=issueBlog" class=""><span class="nav-title">发布博文</span></a></li>
+			    	<li class=""><a href="${ctxPath}/base/blog/blogList?currentPage=blogList" class=""><span class="nav-title">博文列表</span></a></li>
+			    	<li class=""><a href="${ctxPath}/base/page/blog/issue_blog?currentPage=issueBlog" class=""><span class="nav-title">发布博文</span></a></li>
 			    	<li class=""><a href="#" class=""><span class="nav-title">个人中心</span></a></li>
 			    </ul>
 			    <form class="navbar-form navbar-right" role="search">

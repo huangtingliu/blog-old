@@ -57,7 +57,9 @@ public class BlogService {
 		responseDataBean.setResultData(list);
 		responseDataBean.setInfo("成功");
 		responseDataBean.setStatus(ResponseDataBean.SUCCESSFUL);
+		responseDataBean.setPage("blog/blogList");
 		return responseDataBean;
 	}
+	
 	
 }

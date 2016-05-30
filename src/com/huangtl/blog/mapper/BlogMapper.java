@@ -2,8 +2,6 @@ package com.huangtl.blog.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.huangtl.blog.bean.RequestDataBean;
 
 /**

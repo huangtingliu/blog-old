@@ -24,7 +24,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<%@include file="../comm/header.jsp" %>
   	<div id="layout">
 	  	<header>
-	  		<h1>发布博文</h1>
+	  		<h1>标题</h1>
+	  		<input class="form-control" id="title" name="title" type="text" style="width: 500px">
+	  	</header>
+	  	<header>
+	  		<h1>正文</h1>
 	  	</header>
 		<div id="test-editormd">
 			<textarea style="display:none;">
@@ -133,6 +137,7 @@ function get(){
   			type:"post",
   			url:"${ctxPath}/base/ajax/blog/issueBlog",
   			data:{
+  				"title":$("#title").val(),
   				"html":getHTML(),
   				"preview_html":getPreviewedHTML(),
   				"markdown":getMarkdown(),
@@ -140,6 +145,7 @@ function get(){
   			},
   			//dataType:"josn",
   			success:function(data){
+  				alert(data.info);
   				data = data.resultData;
   				console.info(data);
   			}
