@@ -23,22 +23,27 @@
 </head>
 
 <body>
+	<%@include file="../comm/comm.jsp"%>
 	<%@include file="../comm/header.jsp"%>
-	<div id="layout">
+	<div class="layout">
 		<div class="pageContent">
-			<div class="list-group">
-				<c:forEach items="${responseDataBean.resultData}" var="blog">
-					<a href="${ctxPath}/base/page/blog/blogDetail?blogId=${blog.blog_id}"
-						class="list-group-item">
-						<h4 class="list-group-item-heading">${blog.title}<small
-								style="float: right;">${blog.create_time}</small>
-						</h4>
-	
-					</a>
-				</c:forEach>
-			</div>
+			
 		</div>
 	</div>
-	<%@include file="../comm/comm.jsp"%>
+	
+	<script type="text/javascript">
+		$.ajax({
+			type : "post",
+			url : "${ctxPath}/base/ajax/blog/blogDetail",
+			data : {
+				"blogId" : '${param.blogId}'
+			},
+			//dataType:"josn",
+			success : function(data) {
+				data = data.resultData;
+				$(".pageContent").html(data.preview_html);
+			}
+		});
+	</script>
 </body>
 </html>

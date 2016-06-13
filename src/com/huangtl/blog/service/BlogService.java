@@ -1,6 +1,7 @@
 package com.huangtl.blog.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -54,6 +55,7 @@ public class BlogService {
 		log.info("获取博文列表...");
 		ResponseDataBean responseDataBean=new ResponseDataBean();
 		List<?> list = blogMapper.blogList(rdb);
+		
 		responseDataBean.setResultData(list);
 		responseDataBean.setInfo("成功");
 		responseDataBean.setStatus(ResponseDataBean.SUCCESSFUL);
@@ -61,5 +63,15 @@ public class BlogService {
 		return responseDataBean;
 	}
 	
+	public ResponseDataBean blogDetail(RequestDataBean rdb) {
+		ResponseDataBean responseDataBean=new ResponseDataBean();
+		Map<?, ?> map = blogMapper.blogDetail(rdb);
+		
+		responseDataBean.setResultData(map);
+		responseDataBean.setInfo("成功");
+		responseDataBean.setStatus(ResponseDataBean.SUCCESSFUL);
+		responseDataBean.setPage("blog/blogDetail");
+		return responseDataBean;
+	}
 	
 }

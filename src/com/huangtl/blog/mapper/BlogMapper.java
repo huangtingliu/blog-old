@@ -1,6 +1,7 @@
 package com.huangtl.blog.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.huangtl.blog.bean.RequestDataBean;
 
@@ -15,4 +16,6 @@ public interface BlogMapper extends IMapper{
 	public void issueBlog(RequestDataBean rdb);
 	
 	public List<?> blogList(RequestDataBean rdb);
+
+	public Map blogDetail(RequestDataBean rdb);
 }

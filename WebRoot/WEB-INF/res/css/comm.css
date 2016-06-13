@@ -14,11 +14,12 @@ body{
 
 #layout{
 	text-align:left;
+	width:90%;margin:0 auto;
 }
-#layout > header, .btns{
+#layout > header, .btns,.pageContent{
 	padding:15px 0;
-	width:90%;
 	margin:0 auto;
+	width:90%;
 }
 #layout > header > h1{
 	font-size: 20px;

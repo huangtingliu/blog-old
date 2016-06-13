@@ -7,29 +7,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>发布博文</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="blog login page">
-	<link rel="stylesheet" href="${resRoot}/plugins/editor.md-master/css/editormd.css">
-  </head>
-  
-  <body>
-  	<%@include file="../comm/header.jsp" %>
-  	<div id="layout">
-	  	<header>
-	  		<h1>标题</h1>
-	  		<input class="form-control" id="title" name="title" type="text" style="width: 500px">
-	  	</header>
-	  	<header>
-	  		<h1>正文</h1>
-	  	</header>
+<head>
+<base href="<%=basePath%>">
+
+<title>发布博文</title>
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="blog login page">
+
+</head>
+
+<body>
+	<%@include file="../comm/comm.jsp"%>
+	<%@include file="../comm/header.jsp"%>
+	<div id="layout">
+		<header>
+			<h1>标题</h1>
+			<input class="form-control" id="title" name="title" type="text"
+				style="width: 500px">
+		</header>
+		<header>
+			<h1>正文</h1>
+		</header>
 		<div id="test-editormd">
 			<textarea style="display:none;">
 [TOC]
@@ -80,77 +82,76 @@ function get(){
 [![](https://pandao.github.io/editor.md/examples/images/7.jpg)](https://pandao.github.io/editor.md/images/7.jpg "李健首张专辑《似水流年》封面")
 > 图为：李健首张专辑《似水流年》封面
 			</textarea>
-		</div>    
+		</div>
 		<!-- <button onclick="getMarkdown()">获取markdown</button>
 		<button onclick="getHTML()">获取HTML</button>
 		<button onclick="getPreviewedHTML()">获取预览窗口HTML</button>
 		<button id="undo">undo</button> -->
 		<button id="btn_issue_blog" onclick="issueBlog()">发布</button>
-    </div>
-    
-    <%@include file="../comm/comm.jsp" %>
-    <script type="text/javascript" src="${resRoot}/plugins/editor.md-master/editormd.min.js"></script>
-  	<script type="text/javascript">
-  	var testEditor;	
-  	$(function(){
-  		testEditor = editormd("test-editormd", {
-            width   : "90%",
-            height  : 640,
-            syncScrolling : "single",
-            path    : "${resRoot}/plugins/editor.md-master/lib/",
-            emoji :true,
-            saveHTMLToTextarea:true,
-            toolbarCustomIcons :{
-            	info:"" //取消关于工具
-            },
-            //上传图片
-            imageUpload    : true,
-            imageFormats   : ["jpg", "jpeg", "gif", "png", "bmp"],
-            imageUploadURL : "${ctxPath}/ajax/upload/",
-            message :"ssdsds"
-        });
-  		
-  		//外部定义一个按钮事件模仿工具栏按钮效果
-  		$("#undo").bind('click', function() {
-  		    $.proxy(testEditor.toolbarHandlers.undo, testEditor)();
-  		});
-	});
-  	
-  	function getMarkdown(){
-  		var markdown =testEditor.getMarkdown(); // 获取 Markdown 源码
-  		return markdown;
-  	}
-  	function getHTML(){
-  		// 获取 Textarea 保存的 HTML 源码,saveHTMLToTextarea要设置为true
-  		var html = testEditor.getHTML();
-  		return html;
-  	}
-  	function getPreviewedHTML(){
-  		// 获取预览窗口里的 HTML，在开启 watch 且没有开启 saveHTMLToTextarea 时使用
-  		var previewedHTML = testEditor.getPreviewedHTML();
-  		return previewedHTML;
-  	}
-  	
-  	//发布博文
-  	function issueBlog(){
-  		$.ajax({
-  			type:"post",
-  			url:"${ctxPath}/base/ajax/blog/issueBlog",
-  			data:{
-  				"title":$("#title").val(),
-  				"html":getHTML(),
-  				"preview_html":getPreviewedHTML(),
-  				"markdown":getMarkdown(),
-  				"author":"huangtl"
-  			},
-  			//dataType:"josn",
-  			success:function(data){
-  				alert(data.info);
-  				data = data.resultData;
-  				console.info(data);
-  			}
-  		});
-  	}
-  	</script>
-  </body>
+	</div>
+
+	
+	<script type="text/javascript">
+		var testEditor;
+		$(function() {
+			testEditor = editormd("test-editormd", {
+				width : "90%",
+				height : 640,
+				syncScrolling : "single",
+				path : "${resRoot}/plugins/editor.md-master/lib/",
+				emoji : true,
+				saveHTMLToTextarea : true,
+				toolbarCustomIcons : {
+					info : "" //取消关于工具
+				},
+				//上传图片
+				imageUpload : true,
+				imageFormats : [ "jpg", "jpeg", "gif", "png", "bmp" ],
+				imageUploadURL : "${ctxPath}/ajax/upload/",
+				message : "ssdsds"
+			});
+
+			//外部定义一个按钮事件模仿工具栏按钮效果
+			$("#undo").bind('click', function() {
+				$.proxy(testEditor.toolbarHandlers.undo, testEditor)();
+			});
+		});
+
+		function getMarkdown() {
+			var markdown = testEditor.getMarkdown(); // 获取 Markdown 源码
+			return markdown;
+		}
+		function getHTML() {
+			// 获取 Textarea 保存的 HTML 源码,saveHTMLToTextarea要设置为true
+			var html = testEditor.getHTML();
+			return html;
+		}
+		function getPreviewedHTML() {
+			// 获取预览窗口里的 HTML，在开启 watch 且没有开启 saveHTMLToTextarea 时使用
+			var previewedHTML = testEditor.getPreviewedHTML();
+			return previewedHTML;
+		}
+
+		//发布博文
+		function issueBlog() {
+			$.ajax({
+				type : "post",
+				url : "${ctxPath}/base/ajax/blog/issueBlog",
+				data : {
+					"title" : $("#title").val(),
+					"html" : getHTML(),
+					"preview_html" : getPreviewedHTML(),
+					"markdown" : getMarkdown(),
+					"author" : "huangtl"
+				},
+				//dataType:"josn",
+				success : function(data) {
+					alert(data.info);
+					data = data.resultData;
+					console.info(data);
+				}
+			});
+		}
+	</script>
+</body>
 </html>
